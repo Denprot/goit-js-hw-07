@@ -1,21 +1,22 @@
 const form = document.querySelector('.login-form');
+const userLogin = {};
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  
   const data = new FormData(event.target);
-  data.forEach((value,key) => {
-    if(value === "") {
-        alert('All form fields must be filled in');
-        return;
-    } else {
-        userLogin[key] = value.trim();
+
+  data.forEach((value, key) => {
+    if (value.trim() === "") {
+      alert('All form fields must be filled in');
+      return;
     }
+    userLogin[key] = value.trim();
   })
-    
-    console.log(userLogin);
-    event.target.reset();
+
+  console.log(userLogin);
+  event.target.reset();
 });
+
 
 // Обробка відправлення форми form.login-form повинна відбуватися за подією submit.
 // Під час відправлення форми сторінка не повинна перезавантажуватися.
@@ -25,3 +26,4 @@ form.addEventListener('submit', (event) => {
 // де ключ — це ім'я інпутів, а значення — відповідні значення цих інпутів, очищені від пробілів по краях. 
 // Для доступу до елементів форми використовуй властивість elements.
 // При сабміті форми виведи об'єкт із введеними даними в консоль і очисти значення полів форми методом reset. -->
+
